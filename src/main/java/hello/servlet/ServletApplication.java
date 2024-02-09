@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
-@ServletComponentScan //¼­ºí¸´ ÀÚµ¿ µî·Ï
+@ServletComponentScan //ì„œë¸”ë¦¿ ìë™ë“±ë¡
 @SpringBootApplication
 public class ServletApplication {
 
