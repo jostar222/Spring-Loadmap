@@ -49,8 +49,7 @@ public class ValidationItemControllerV2 {
     @PostMapping("/add")
     public String addItemV1(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         //Model에 item이 담겨 있어서 검증 실패 시 입력했던 데이터가 그대로 반환됨
-        //BindingResult bindingResult 파라미터의 위치는 @ModelAttribute Item item 다음에 와야 한다.(Item을 binding하므로)
-
+        //BindingResult bindingResult 파라미터의 위치는 @ModelAttribute Item item 다음에 와야 한다.(검증할 대상 바로 뒤에!!)
 
         //검증 로직
         if (!StringUtils.hasText(item.getItemName())) {
