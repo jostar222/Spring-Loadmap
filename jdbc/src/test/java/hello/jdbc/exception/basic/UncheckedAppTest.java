@@ -3,7 +3,6 @@ package hello.jdbc.exception.basic;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import java.net.ConnectException;
 import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -18,7 +17,7 @@ public class UnCheckedAppTest {
     }
 
     @Test
-    void printEx() {
+    void printEx() { //예외 포함과 스택 트레이스
         Controller controller = new Controller();
         try {
             controller.request();
@@ -69,7 +68,7 @@ public class UnCheckedAppTest {
     }
 
     static class RuntimeSQLException extends RuntimeException {
-        public RuntimeSQLException() {
+        public RuntimeSQLException() { //예외 포함과 스택 트레이스
         }
         public RuntimeSQLException(Throwable cause) {
             super(cause);
