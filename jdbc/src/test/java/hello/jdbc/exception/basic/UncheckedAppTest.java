@@ -18,7 +18,7 @@ public class UnCheckedAppTest {
     }
 
     @Test
-    void printEx() {
+    void printEx() { //예외 포함과 스택 트레이스
         Controller controller = new Controller();
         try {
             controller.request();
@@ -69,7 +69,7 @@ public class UnCheckedAppTest {
     }
 
     static class RuntimeSQLException extends RuntimeException {
-        public RuntimeSQLException() {
+        public RuntimeSQLException() { //예외 포함과 스택 트레이스
         }
         public RuntimeSQLException(Throwable cause) {
             super(cause);
