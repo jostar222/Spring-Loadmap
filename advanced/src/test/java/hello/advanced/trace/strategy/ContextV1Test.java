@@ -37,16 +37,77 @@ public class ContextV1Test {
     }
 
     /**
-     * 전략 패턴 사용
+     * 전략 패턴 적용
      */
     @Test
-    void strategy() {
+    void strategyV1() {
         StrategyLogic1 strategyLogic1 = new StrategyLogic1();
         ContextV1 context1 = new ContextV1(strategyLogic1);
         context1.execute();
 
         StrategyLogic2 strategyLogic2 = new StrategyLogic2();
         ContextV1 context2 = new ContextV1(strategyLogic2);
+        context2.execute();
+    }
+
+    /**
+     * 전략 패턴 익명 내부 클래스1
+     */
+    @Test
+    void strategyV2() {
+        Strategy strategyLogic1 = new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+        ContextV1 context1 = new ContextV1(strategyLogic1);
+        log.info("strategyLogic1={}", strategyLogic1.getClass());
+        context1.execute();
+
+        Strategy strategyLogic2 = new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즈니스 로직2 실행");
+            }
+        };
+        ContextV1 context2 = new ContextV1(strategyLogic2);
+        log.info("strategyLogic2={}", strategyLogic2.getClass());
+        context2.execute();
+    }
+
+    /**
+     * 전략 패턴 익명 내부 클래스2
+     */
+    @Test
+    void strategyV3() {
+        ContextV1 context1 = new ContextV1(new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        });
+        context1.execute();
+
+        ContextV1 context2 = new ContextV1(new Strategy() {
+            @Override
+            public void call() {
+                log.info("비즈니스 로직2 실행");
+            }
+        });
+        context2.execute();
+    }
+
+    /**
+     * 전략 패턴, 람다
+     */
+    @Test
+    void strategyV4() {
+        //람다로 변경하려면 인터페이스에 메서드가 1개만 있으면 됨
+        ContextV1 context1 = new ContextV1(() -> log.info("비즈니스 로직1 실행"));
+        context1.execute();
+
+        ContextV1 context2 = new ContextV1(() -> log.info("비즈니스 로직2 실행"));
         context2.execute();
     }
 }
